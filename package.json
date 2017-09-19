@@ -4,7 +4,7 @@
   "description": "Project for educational purposes",
   "main": "src/js/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,32 @@
   "bugs": {
     "url": "https://github.com/OliMe/frontend-educational-repo/issues"
   },
-  "homepage": "https://github.com/OliMe/frontend-educational-repo#readme"
+  "homepage": "https://github.com/OliMe/frontend-educational-repo#readme",
+  "dependencies": {
+    "css-loader": "^0.28.7",
+    "karma-chrome-launcher": "^2.2.0",
+    "style-loader": "^0.18.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chai": "^0.1.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.4",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.4",
+    "mocha": "^3.5.3",
+    "node-sass": "^4.5.3",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "phantomjs-prebuilt": "^2.1.15",
+    "sass-loader": "^6.0.6",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.6.0"
+  },
+  "optionalDependencies": {}
 }
