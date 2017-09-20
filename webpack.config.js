@@ -7,14 +7,17 @@ const extractSass = new ExtractTextPlugin({
     filename: "[name].[contenthash].css"
 });
 
+var webpack = require('webpack');
+
 module.exports = {
   watch:true,
   entry: [
-      './src/js/vendor.min.js',
+
       './src/js/lib/zepto.min.js',
       './src/js/lib/underscore-min.js',
       './src/js/lib/backbone-min.js',
       './src/js/lib/backbonelocalStorage-min.js',
+      './src/js/index.js',
       './src/scss/main.scss',
       './src/js/note_router.js',
       './src/js/note_model.js',
@@ -50,13 +53,13 @@ module.exports = {
      loaders: [
            {
                test: /\.js$/,
-               loader: 'babel-loader',
-               query: {
-                   presets: ['es2015']
-               }
+               loader: 'babel-loader'
            }
      ]
    },
+    resolve: {
+        modules: [path.resolve(__dirname, 'src'), 'node_modules']
+    },
    plugins: [
        new UglifyJSPlugin(),
        new ExtractTextPlugin({ // define where to save the file
@@ -65,7 +68,11 @@ module.exports = {
        new OptimizeCssAssetsPlugin({
            assetNameRegExp: /\.css$/,
            cssProcessorOptions: { discardComments: { removeAll: true } }
-       })
+       }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor-min.js'
+        })
    ]
 
   };
