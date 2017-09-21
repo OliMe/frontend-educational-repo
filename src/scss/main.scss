@@ -1,9 +1,116 @@
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
-
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #cacaca;
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:regular,bold');
 
 body {
-  font: 100% $font-stack;
-  background: $primary-color;
+  font-family: "Open Sans";
+  background: #ffffff;
+}
+
+main {
+  position: relative;
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+  padding-bottom: 6em;
+  z-index: 90;
+}
+
+article {
+  background:#f5f5ed;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.1);
+  margin-top:2em;
+}
+
+h1 {
+  display: inline;
+  font-size: 200%;
+  margin: .3em 0 0;
+  padding: 0;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #002b41;
+}
+
+h2 {
+  display: inline;
+  font-size: 160%;
+  margin: .3em 0 0;
+  line-height: 1.1;
+  color: #000;
+}
+
+.container {
+  width:1170px;
+  margin: 0 auto;
+}
+
+.margin-left-5-persent {
+  margin-left:5%;
+}
+
+.margin-left-1-em {
+  margin-left:1em;
+}
+
+.title {
+  padding-top:2em;
+}
+
+.description-title {
+  padding-top:1em;
+  font-size:14px;
+}
+
+.limit {
+  min-width:995px;
+  max-width: 1600px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.reduce-col {
+  float: left;
+  width: 15em;
+  margin: 1.5em 1.4em 0;
+}
+
+.reduce {
+  margin-left:18em;
+}
+
+
+.layout {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 350px;
+  background: #92c9e7;
+  background: linear-gradient(180deg,#92c9e7 0,#94c9e7 25%,#aadaec 50%,#ddf3f7 75%,#fff);;
+}
+
+.left-price {
+  padding-left: 0px;
+  margin-top: -13px;
+}
+
+.top3em {
+  margin-top: 3em;
+}
+
+.top1em {
+  margin-top: 1em;
+}
+
+.left-price-list {
+  font-size: 14px;
+  position: relative;
+  padding-top: 5px;
+  list-style-type: none;
+  -webkit-padding-start:0px;
+}
+
+.left-price-list li {
+  margin:1em;
+  margin-left: 0.5em;
 }
