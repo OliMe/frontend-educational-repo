@@ -18,8 +18,14 @@ article {
   background:#f5f5ed;
   border-radius: 5px;
   border: 1px solid rgba(0,0,0,.1);
-  margin-top:2em;
+  max-width: 960px;
 }
+
+section {
+  background: #ffffff;
+  padding:5px;
+}
+
 
 h1 {
   display: inline;
@@ -39,9 +45,14 @@ h2 {
   color: #000;
 }
 
-.container {
-  width:1170px;
-  margin: 0 auto;
+aside {
+  float:right;
+  clear:right;
+}
+
+p {
+  padding:0;
+  margin:0;
 }
 
 .margin-left-5-persent {
@@ -54,6 +65,7 @@ h2 {
 
 .title {
   padding-top:2em;
+  padding-bottom: 2em;
 }
 
 .description-title {
@@ -68,14 +80,39 @@ h2 {
   margin-right:auto;
 }
 
-.reduce-col {
+.extra {
+  width:22%;
+}
+.dissatisfaction-list {
+  width:76%;
+}
+
+.left-menu-col {
   float: left;
   width: 15em;
-  margin: 1.5em 1.4em 0;
+  margin: 1.6em 0em 0;
+}
+
+.menu-rght-col {
+  width:349px;
+  background: #2a89cf;
+  position:relative;
+}
+
+.menu-rght-col .container-col {
+  padding:1em;
+}
+
+.info-draft-save {
+  margin-top:1em;
+  color:rgba(255,255,255, .4);
+  font-style:italic;
+  font-size: 13px;
+  text-align:center;
 }
 
 .reduce {
-  margin-left:18em;
+  margin-left:15em;
 }
 
 
@@ -114,3 +151,62 @@ h2 {
   margin:1em;
   margin-left: 0.5em;
 }
+
+.order-recieved {
+  float: right;
+  text-align:right;
+  margin-top: 2em;
+  margin-right: 1.5em;
+  font-size:15px;
+
+}
+
+.dissatisfaction-info {
+  float:left;
+  max-width: 550px;
+}
+
+.more-inform {
+  padding-top:.4em;
+}
+
+.num-invoice {
+  color:#a3a3a3;
+  font-size: 13px;
+  display:inline-block;
+}
+.num-article {
+  margin-left:2em;
+  color:#a3a3a3;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.claim-summ {
+  font-size: 15px;
+  color:#ffffff;
+  font-weight: bold;
+}
+
+.down-decor-right-col {
+  position: absolute;
+  top: 99%;
+  left: 0;
+  right: 0;
+  height: 20px;
+   background: 0 0;
+   overflow: hidden;
+}
+
+.down-decor-right-col::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-style: solid;
+  border-width: 20px 200px 0;
+  line-height: 0;
+  margin-left: -200px;
+  border-color: #2a89cf transparent transparent;
+}
+

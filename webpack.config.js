@@ -13,21 +13,12 @@ module.exports = {
   watch:true,
   entry: [
 
-      './src/js/lib/zepto.min.js',
-      './src/js/lib/underscore-min.js',
-      './src/js/lib/backbone-min.js',
-      './src/js/lib/backbonelocalStorage-min.js',
       './src/js/index.js',
       './src/scss/main.scss',
       './src/scss/icons.scss',
       './src/scss/forms.scss',
       './src/scss/links_buttons.scss',
-      './src/js/note_router.js',
-      './src/js/note_model.js',
-      './src/js/views/note_index.js',
-      './src/js/views/note_new.js',
-      './src/js/views/note_edit.js',
-      './src/js/helpers.js'
+      './src/scss/tooltips.scss'
   ],
   output: {
     filename: 'bundle.js',

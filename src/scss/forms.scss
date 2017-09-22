@@ -50,11 +50,10 @@ input:focus {
 .form-back-item {
   padding-top:1em;
   padding-left:2.5em;
-  margin-top:2em;
 }
 
 .form-about-item {
-  margin-top:3em;
+  margin-top:2em;
 }
 
 .input-styled {
@@ -91,18 +90,15 @@ input:focus {
   margin-top:1em;
 }
 
-.close-item {
-  position: absolute;
-  background: url('/src/img/close-item.png');
-  right:-6px;
-  top:-6px;
-  z-index: 90;
-  width: 15px;
-  height:15px;
+
+.item-photo {
+  display:inline-block;
+  position: relative;
 }
 
 .item-basket {
-  display:inline-block;
+  padding: 5px;
+  min-height: 145px;
   position: relative;
 }
 

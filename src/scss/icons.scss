@@ -1,10 +1,43 @@
 
-$g_icon-arrow:  url("/src/img/arrow.png");
-$g_icon-basket: url("/src/img/basket.png");
-$g_icon-exit:   url("/src/img/exit.png");
-$g_icont-heart: url("/src/img/heart.png");
-$g_icon-close:  url("/src/img/close.png");
+$g_icon-arrow:  url("/src/img/icons/arrow.png");
+$g_icon-basket: url("/src/img/icons/basket.png");
+$g_icon-exit:   url("/src/img/icons/exit.png");
+$g_icont-heart: url("/src/img/icons/heart.png");
+$g_icon-close:  url("/src/img/icons/close.png");
+$g_icon-comment: url("/src/img/icons/comment.png");
+$g_icon-photo: url("/src/img/icons/photo.png");
+$g_icon-add: url("/src/img/icons/add.png");
+$g_icon-close: url('/src/img/icons/close-item.png');
 
+.icon-add:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  background-image: $g_icon-add;
+  margin: -1px 5px 0 5px;
+  width: 14px;
+  height: 14px;
+}
+
+.icon-comment:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  background-image: $g_icon-comment;
+  margin: -4px 3px 0 4px;
+  width: 17px;
+  height: 16px;
+}
+
+.icon-photo:before {
+  content:"";
+  display: inline-block;
+  vertical-align: middle;
+  background-image: $g_icon-photo;
+  margin: -3px 3px 0 4px;
+  width: 19px;
+  height: 15px;
+}
 
 .icon-exit:before {
   content:"";
@@ -15,6 +48,18 @@ $g_icon-close:  url("/src/img/close.png");
   width: 17px;
   height: 17px;
 }
+
+.close-item {
+  position: absolute;
+  background: $g_icon-close;
+  right:-6px;
+  top:-6px;
+  z-index: 90;
+  width: 15px;
+  height:15px;
+  cursor:pointer;
+}
+
 
 .icon-close:before {
   content:"";
