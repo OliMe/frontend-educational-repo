@@ -126,9 +126,17 @@ button {
   padding:0.7em;
   font-size:15px;
 
+  &:focus {
+    background: #afb8bb;
+    font-weight: bold;
+    color:#ffffff;
+    border:none;
+  }
+
+
 }
 
-.btn-set-form-dissatisfaction:focus {
+.btn-diss-active {
   background: #afb8bb;
   font-weight: bold;
   color:#ffffff;

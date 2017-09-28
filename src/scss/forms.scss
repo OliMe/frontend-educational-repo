@@ -1,16 +1,16 @@
-*{
+* {
   outline: none;
 }
 
 label {
-  font-size:13px;
+  font-size: 13px;
 
   padding-left: 0;
   padding-bottom: 0.4em;
 }
 
 input, textarea {
-  utline: none;
+  outline: none;
   font-size: 100%;
   line-height: 1.8;
   padding: 0;
@@ -20,26 +20,30 @@ input, textarea {
   -webkit-rtl-ordering: logical;
   -webkit-writing-mode: horizontal-tb;
   user-select: text;
+  &:focus {
+    outline-offset: -2px;
+  }
 }
 
-input:focus {
-  outline-offset: -2px;
+.photo_add {
+  height: 100px;
+  margin: 5px;
 }
 
 .comment-area {
-  margin-top:0.4em;
+  margin-top: 0.4em;
   width: 96%;
 }
 
 .link-add-photo {
-  color:#1f84db;
+  color: #1f84db;
   font-size: 13px;
   border-bottom: 1px dashed #1f84db;
   text-decoration: none;
-}
 
-.link-add-photo:hover {
-  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
 }
 
 .form-btns-bottom {
@@ -48,51 +52,49 @@ input:focus {
 }
 
 .form-back-item {
-  padding-top:1em;
-  padding-left:2.5em;
+  padding-top: 1em;
+  padding-left: 2.5em;
 }
 
 .form-about-item {
-  margin-top:2em;
+  margin-top: 2em;
 }
 
 .input-styled {
   position: relative;
   background: #fff;
   border: 1px solid #c5c5bc;
-  box-shadow: inset 0 1px 2px rgba(152,152,170,.6);
+  box-shadow: inset 0 1px 2px rgba(152, 152, 170, .6);
   border-radius: 4px;
   box-sizing: border-box;
 
   -webkit-appearance: none;
   padding: 0 .5em;
-}
 
-.input-styled:focus {
-  border-color: #00aeef;
+  &:focus {
+    border-color: #00aeef;
+  }
 }
-
 
 .form-dissatisfaction {
-  margin-top:2em;
+  margin-top: 2em;
 }
 
 .form-set-num {
-  margin-top:2em;
+  margin-top: 2em;
 }
 
 .form-set-comment {
-  margin-top:2em;
+  margin-top: 2em;
 }
 
 .form-set-item {
   position: relative;
-  margin-top:1em;
+  margin-top: 1em;
 }
 
-
 .item-photo {
-  display:inline-block;
+  display: inline-block;
   position: relative;
 }
 
@@ -100,18 +102,19 @@ input:focus {
   padding: 5px;
   min-height: 145px;
   position: relative;
-  padding-left:160px;
+  padding-left: 160px;
+  background: #ffffff;
 }
 
 .item-img {
-  width:140px;
-  position:absolute;
-  top:0.2em;
-  left:0;
+  width: 140px;
+  position: absolute;
+  top: 0.2em;
+  left: 0;
 }
 
 .row {
-  font-size:13px;
+  font-size: 13px;
 }
 
 .button-dissatisfaction {
@@ -124,7 +127,7 @@ input:focus {
 
 .row-inline-50 {
   display: inline-block;
-  width:45%;
+  width: 45%;
 }
 
 .row-inline-50 input {
@@ -133,9 +136,8 @@ input:focus {
 }
 
 .row-inline-50 label {
-  display:block;
+  display: block;
 }
-
 
 .input-amount-container {
   min-height: 30px;
@@ -144,10 +146,10 @@ input:focus {
   display: inline-block;
   background: #fff;
   border: 1px solid #c5c5bc;
-  box-shadow: inset 0 1px 2px rgba(152,152,170,.6);
+  box-shadow: inset 0 1px 2px rgba(152, 152, 170, .6);
   box-sizing: border-box;
   transition: width .1s ease-in;
-  position:relative;
+  position: relative;
   border-radius: 6px;
 }
 
@@ -157,18 +159,18 @@ input:focus {
   padding-left: 14px;
   text-align: center;
   font-size: 16px;
-  font-family: OpenSans,sans-serif;
+  font-family: OpenSans, sans-serif;
   font-weight: 700;
-  width:100%;
-  border:none;
-  background:none;
+  width: 100%;
+  border: none;
+  background: none;
 }
 
 .input-minus-select {
-  display:inline-block;
+  display: inline-block;
   position: absolute;
   top: 1px;
-  left:4px;
+  left: 4px;
   color: #989898;
   font-size: 18px;
   text-decoration: none;
@@ -184,10 +186,10 @@ input:focus {
 }
 
 .input-plus-select {
-  display:inline-block;
+  display: inline-block;
   position: absolute;
   top: 1px;
-  right:4px;
+  right: 4px;
   color: #989898;
   font-size: 18px;
   text-decoration: none;
@@ -197,16 +199,9 @@ input:focus {
   -ms-user-select: none;
   user-select: none;
 
+  &:before {
+    content: "+";
+  }
 }
 
-.input-plus-select:before {
-  content: "+";
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
-  -webkit-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
 
