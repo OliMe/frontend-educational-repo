@@ -5,7 +5,6 @@ import Backbone from "backbone";
 import $ from "jquery";
 
 import Cause from './cause';
-import ListView from './list';
 import FormModel from '../models/form';
 import PhotoCollection from '../collections/photos';
 
@@ -102,10 +101,7 @@ var FormView = Backbone.View.extend({
         $('.btn-diss').removeClass('btn-diss-active');
         $(ev.currentTarget).addClass('btn-diss-active');
 
-        // изменить тип претензии
-        this.model.set('type_cause', $(ev.currentTarget).attr( 'id' ));
-        // изменить имя претензии
-        this.model.set('name_cause', $(ev.currentTarget).text());
+        this.model.changeCause( { type_cause: $(ev.currentTarget).attr( 'id' ), name_cause: $(ev.currentTarget).text() } );
 
         // рендерить новую форму для ввода
         this.cause.setElement( this.$el.find('.form-set-num'));
@@ -113,7 +109,7 @@ var FormView = Backbone.View.extend({
     },
 
     // событие: добавили новое фото
-    onPhotoAdded:function(ev) {
+    onPhotoAdded:function() {
         this.model.set('photos', this.photoCollection.toJSON())
     },
 
@@ -143,12 +139,12 @@ var FormView = Backbone.View.extend({
 
     closeItem: function ( ev ) {
 
-        var photo = this.photoCollection.get( $(ev.target).attr('name') );
+        var photo = this.photoCollection.get( $(ev.target).attr('id') );
         this.photoCollection.remove( photo );
         this.$el.find( '#id' + photo.get('id') ).remove();
 
         this.render();
-    },
+    }
 
 });
 

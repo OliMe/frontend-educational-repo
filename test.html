@@ -115,7 +115,7 @@
                 %>
                 <div class="item-photo" id="id<%= model.id %>">
                     <img src="<%= model.data %>" class="photo_add">
-                    <span class="close-item" name="<%= model.id %>"></span>
+                    <span class="close-item" id="<%= model.id %>"></span>
                 </div>
                 <% }) %>
             </div>
@@ -155,7 +155,7 @@
             <label class="label-inline">Заказано:</label>
             <div class="input-amount-container">
                 <span class="input-minus-select btn-minus-summ-1"></span>
-                <input  class="input-amount input-num-1" type="text" value="100" maxlength="5">
+                <input class="input-amount input-num-1" type="text" value="100" maxlength="5">
                 <span class="input-plus-select btn-plus-summ-1"></span>
             </div>
         </div>
@@ -228,6 +228,28 @@
             </p>
         </div>
         <div class="order-recieved">
+
+            <% switch(modelJSON) { case 13: %>
+            <button id="schoolButton" value="schools" class="gridChooser k-textbox">Schools</button>
+            <% break; case 12: %>
+            <button id="classButton" value="classes" class="gridChooser k-textbox">Classes</button>
+            <button id="testButton" value="tests" class="gridChooser k-textbox">Test</button>
+            <% break; } %>
+
+
+            <% switch(modelJSON.type_cause){ case "mirrage": %>
+            <div>браковано: <b><%= modelJSON.num1 %></b> шт.</div>
+            <% break; case "non-inposition":%>
+            <div>заказано: <b><%= modelJSON.num1 %></b> шт.</div>
+            <div>получено: <b><%= modelJSON.num2 %></b> шт.</div>
+            <% break; case "undercompartment": %>
+            <div>недокомплектовано: <b><%= modelJSON.num1 %></b> шт.</div>
+            <% break; case "surpluses":%>
+            <div>излишки: <b><%= modelJSON.num1 %></b> шт.</div>
+            <% break; case "return":%>
+            <div>возврат: <b><%= modelJSON.num1 %></b> шт.</div>
+            <% break; } %>
+
 
         </div>
         <div class="item-img">

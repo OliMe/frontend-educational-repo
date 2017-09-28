@@ -13,7 +13,8 @@ var FormModel = Backbone.Model.extend({
     },
 
     defaults: {
-        name_cause: "",
+        name_cause: "",                                 // название претензии (рус текст)
+        enter_cause: "",                                // вывод претензии в листе (рус текст)
         type_cause: "",                                 // тип претензии
         name: "Товар",                                  // название товара
         invoice: "",                                    // номер накладной
@@ -73,12 +74,25 @@ var FormModel = Backbone.Model.extend({
         if (this.get('num1') <= 0) {
             return "Введите количество неудовлетворивших товаров";
         }
-        
+
+        if( this.get('type_cause') == "non-inposition" )
+        {
+            if( this.get('num1') > this.get('num2') )
+            {
+                return "";
+            }
+        }
 
         return true;
 
     },
 
+    changeCause: function( obj ) {
+        // изменить тип претензии
+        this.set('type_cause', obj.type_cause);
+        // изменить имя претензии
+        this.set('name_cause', obj.name_cause );
+    },
 
     plusCauseItemNum1: function () {
         this.set('num1', this.get('num1') + 1);

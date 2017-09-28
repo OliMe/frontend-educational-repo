@@ -26,7 +26,6 @@ button {
   border: 1px solid;
   border-radius: 100px;
   background: 0 0;
-  font-family: Open Sans;
   font-weight: 700;
   text-align: center;
   text-decoration: none;
@@ -81,11 +80,10 @@ button {
   color: #000000;
   text-decoration: none;
 
-  -webkit-transition:  color .1s ease-out,border .1s ease-out;;
-  -moz-transition:  color .1s ease-out, border .1s ease-out;;
-  -o-transition:  color .1s ease-out,border .1s ease-out;;
-  -ms-transition: color .1s ease-out,border .1s ease-out;;
-  transition:  color .1s ease-out,border .1s ease-out;;
+  -webkit-transition:  color .1s ease-out,border .1s ease-out;
+  -moz-transition:  color .1s ease-out, border .1s ease-out;
+  -o-transition:  color .1s ease-out,border .1s ease-out;
+  transition:  color .1s ease-out,border .1s ease-out;
 }
 
 .link-left:hover {
@@ -191,6 +189,6 @@ button {
   border-bottom: 1px solid #bbdaf4;
 }
 
-.mirage {
+.mirrage {
   color:#fb3a2f;
 }
