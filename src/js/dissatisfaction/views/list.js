@@ -1,94 +1,82 @@
-/**
- * Created by pasha on 25.09.17.
- */
 import _ from 'lodash';
 import Backbone from "backbone";
 import $ from "jquery";
-
-import FormModel from '../models/form';
-
-import Cause from './cause';
 import FormView from "../views/form";
 import SendFormView from "../views/send";
+import ListCollection from "../collections/items";
 
-
+/**
+ * Отображение списка добавленных товаров через форму претензии
+ */
 var ListView = Backbone.View.extend({
-
     el: $('.dissatisfaction-list'),
-
-    initialize: function (collection) {
-
-        this.collection = collection;
+    /**
+     * Создает коллекцию товаров и форму добавления нового товара
+     */
+    initialize: function () {
+        this.collection = new ListCollection();
         this.listenTo(this.collection, "add", this.showBtnForm );
-
         this.render();
-
         // создать форму отправления
-        this.sendForm = new SendFormView(collection);
-
-        if( collection.length <= 0 )
+        this.sendForm = new SendFormView(this.collection);
+        // если коллекция еще не содержит товары, отобразить форму заполнения
+        if( this.collection.length <= 0 )
             this.addNewForm();
     },
-
-    isAddingForm: true,
-
-
+    events: {
+        'mousedown .btn-add-item': "addNewForm",   // кнопка создания новой формы
+    },
+    // флаг, что форма отображена
+    isShowForm: true,
     template: _.template($('#template_item').html(), {}),
     templateBtn: _.template($('#btn_add_template').html()),
     templateIconComment: _.template($('#template_icom_comment')),
     templateIconPhoto: _.template($('#template_icom_photo')),
-
-
-    events: {
-        'mousedown .btn-add-item': "addNewForm",   // кнопка создания новой формы
-    },
-
     render: function () {
-        var that = this;
-
         this.$el.html(this.template({
             collection: this.collection
         }));
-
-        this.$el.append( this.templateBtn({ isShowBtn:this.isAddingForm }) );
+        this.$el.append( this.templateBtn({ isShowBtn:this.isShowForm }) );
     },
-
     remove: function () {
         this.$el.empty();
     },
-
+    /**
+     * Показать кнопку создания формы, активировать кнопку отправления претензии
+     */
     showBtnForm: function () {
         this.sendForm.enableSendBtn();
-        this.isAddingForm = true;
+        this.isShowForm = true;
         this.render();
     },
-
+    /**
+     * Спрятать кнопку создания формы, деактивировать кнопку отправления претензии
+     */
     hideBtnForm: function() {
         this.sendForm.disableSendBtn();
-        this.isAddingForm = false;
+        this.isShowForm = false;
         this.render();
     },
-
+    /**
+     * Создать новый товар
+     * @param model заполненная форма
+     */
     addNewItem: function (model) {
         this.collection.add(model);
         model.save();
         this.render();
     },
-
+    /**
+     * Создает новую форму для добавления товара
+     */
     addNewForm: function () {
-
         // спрятать кнопку
         this.hideBtnForm();
-
         // отображение формы добавления товара при загрузке страницы
         var item = new FormView(this.collection, this);
         item.render();
-
         // показать кнопку, если отменили форму
         this.listenTo(item, 'canceled', this.showBtnForm );
     }
-
-
 });
-
 export default ListView;
