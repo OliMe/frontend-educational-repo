@@ -1,0 +1,212 @@
+*{
+  outline: none;
+}
+
+label {
+  font-size:13px;
+
+  padding-left: 0;
+  padding-bottom: 0.4em;
+}
+
+input, textarea {
+  utline: none;
+  font-size: 100%;
+  line-height: 1.8;
+  padding: 0;
+  margin: 0;
+  font-family: Open Sans;
+  box-sizing: border-box;
+  -webkit-rtl-ordering: logical;
+  -webkit-writing-mode: horizontal-tb;
+  user-select: text;
+}
+
+input:focus {
+  outline-offset: -2px;
+}
+
+.comment-area {
+  margin-top:0.4em;
+  width: 96%;
+}
+
+.link-add-photo {
+  color:#1f84db;
+  font-size: 13px;
+  border-bottom: 1px dashed #1f84db;
+  text-decoration: none;
+}
+
+.link-add-photo:hover {
+  text-decoration: none;
+}
+
+.form-btns-bottom {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.form-back-item {
+  padding-top:1em;
+  padding-left:2.5em;
+}
+
+.form-about-item {
+  margin-top:2em;
+}
+
+.input-styled {
+  position: relative;
+  background: #fff;
+  border: 1px solid #c5c5bc;
+  box-shadow: inset 0 1px 2px rgba(152,152,170,.6);
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  -webkit-appearance: none;
+  padding: 0 .5em;
+}
+
+.input-styled:focus {
+  border-color: #00aeef;
+}
+
+
+.form-dissatisfaction {
+  margin-top:2em;
+}
+
+.form-set-num {
+  margin-top:2em;
+}
+
+.form-set-comment {
+  margin-top:2em;
+}
+
+.form-set-item {
+  position: relative;
+  margin-top:1em;
+}
+
+
+.item-photo {
+  display:inline-block;
+  position: relative;
+}
+
+.item-basket {
+  padding: 5px;
+  min-height: 145px;
+  position: relative;
+  padding-left:160px;
+}
+
+.item-img {
+  width:140px;
+  position:absolute;
+  top:0.2em;
+  left:0;
+}
+
+.row {
+  font-size:13px;
+}
+
+.button-dissatisfaction {
+  margin-top: 0.4em;
+}
+
+.row-inline {
+  display: inline-block;
+}
+
+.row-inline-50 {
+  display: inline-block;
+  width:45%;
+}
+
+.row-inline-50 input {
+  width: 100%;
+  height: 32px;
+}
+
+.row-inline-50 label {
+  display:block;
+}
+
+
+.input-amount-container {
+  min-height: 30px;
+  width: 80px;
+  transition: width .1s ease-in;
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #c5c5bc;
+  box-shadow: inset 0 1px 2px rgba(152,152,170,.6);
+  box-sizing: border-box;
+  transition: width .1s ease-in;
+  position:relative;
+  border-radius: 6px;
+}
+
+.input-amount {
+  min-height: 28px;
+  padding-right: 14px;
+  padding-left: 14px;
+  text-align: center;
+  font-size: 16px;
+  font-family: OpenSans,sans-serif;
+  font-weight: 700;
+  width:100%;
+  border:none;
+  background:none;
+}
+
+.input-minus-select {
+  display:inline-block;
+  position: absolute;
+  top: 1px;
+  left:4px;
+  color: #989898;
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input-minus-select:before {
+  content: "\2212";
+}
+
+.input-plus-select {
+  display:inline-block;
+  position: absolute;
+  top: 1px;
+  right:4px;
+  color: #989898;
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+}
+
+.input-plus-select:before {
+  content: "+";
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
