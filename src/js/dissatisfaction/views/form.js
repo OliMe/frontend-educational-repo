@@ -39,9 +39,15 @@ var FormView = Backbone.View.extend({
 
     },
     template: _.template( $('#form_template').html() ),
+    /**
+     * Выводит форму, передает коллекцию фотографий, добавленных пользователем
+     */
     render: function () {
         this.$el.html(this.template({ collection:this.photoCollection.toJSON() }));
     },
+    /**
+     * Удаляет слушатели, очищает элемент
+     */
     remove: function() {
         this.undelegateEvents();
         this.$el.empty();

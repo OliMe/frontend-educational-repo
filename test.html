@@ -195,10 +195,10 @@
     <div class="item-basket">
         <div class="dissatisfaction-info">
             <p><a href="" class="link-non-imposition <%= modelJSON.type_cause %>"><%= modelJSON.name_cause %></a>
-                <% if( item.isComment() == true ) { %>
+                <% if( item.hasComment() == true ) { %>
                 <span class="icon-comment"></span>
                 <% } %>
-                <% if( item.isPhoto() == true ) { %>
+                <% if( item.hasPhoto() == true ) { %>
                 <span class="icon-photo"></span>
                 <% } %>
             </p>

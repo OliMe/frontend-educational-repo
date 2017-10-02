@@ -6,8 +6,6 @@ import LocalStorage from 'backbone.localstorage';
  */
 var FormModel = Backbone.Model.extend({
     localStorage: new LocalStorage('ListCollection'),
-    initialize: function () {
-    },
     defaults: {
         name_cause: "",                   // название претензии (рус текст)
         enter_cause: "",                  // вывод претензии в листе (рус текст)
@@ -36,7 +34,7 @@ var FormModel = Backbone.Model.extend({
     },
     /**
      * Валидация вводимых значений
-     * @returns {*} возвращает текс ошибки валидации или true если все ок
+     * @returns boolean|string возвращает текс ошибки валидации или true если все ок
      */
     validateForm: function () {
         if (this.get('type_cause') == "") {
@@ -76,14 +74,14 @@ var FormModel = Backbone.Model.extend({
      * Существует ли комментарий
      * @returns {boolean} возвращает true если существует
      */
-    isComment: function () {
+    hasComment: function () {
         return this.get('comment').length > 0;
     },
     /**
      * Существует ли фото
-     * @returns {boolean} возвращает true еси существует
+     * @returns {boolean} возвращает true если существует
      */
-    isPhoto: function () {
+    hasPhoto: function () {
         return this.get('photos').length > 0;
     }
 });

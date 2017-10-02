@@ -32,12 +32,19 @@ var ListView = Backbone.View.extend({
     templateBtn: _.template($('#btn_add_template').html()),
     templateIconComment: _.template($('#template_icom_comment')),
     templateIconPhoto: _.template($('#template_icom_photo')),
+    /**
+     * Отображает коллекцию товаров, добавляет в конец кнопку создания новой формы
+     * добавления товара
+     */
     render: function () {
         this.$el.html(this.template({
             collection: this.collection
         }));
         this.$el.append( this.templateBtn({ isShowBtn:this.isShowForm }) );
     },
+    /**
+     * Удаляет отображение всех элементов и кнопку добавления новой претензии
+     */
     remove: function () {
         this.$el.empty();
     },

@@ -20,7 +20,6 @@ var UtiliteInput = Backbone.View.extend({
      * @param ev событие клика на <span>, input получаем через родителя
      */
     minusVal: function (ev) {
-
         var input = $(ev.currentTarget).parent().find('.input-amount');
         var val = input.val();
         if (val > 0) {
