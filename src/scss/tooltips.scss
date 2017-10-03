@@ -2,52 +2,50 @@
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
+  .tooltiptext {
+    visibility: hidden;
+
+    background-color: #ffffff;
+    color: #000000;
+
+    border-radius: 6px;
+    padding: 10px 10px;
+    position: absolute;
+    z-index: 1;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+    box-shadow: 0 1px 4px rgba(121,41,0,.25);
+    font-size:13px;
+    font-weight: normal;
+    line-height: 1.5em;
+    text-align: left;
+  }
+  .btn-send-tooltip {
+    left: 55px;
+    bottom: 125%;
+  }
+  .btn-question-tooltip {
+    left: -83px;
+    bottom: 200%;
+    width:280px;
+
+  }
+  .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+  }
+  &:hover {
+    .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 }
 
-.tooltip .tooltiptext {
-  visibility: hidden;
-
-  background-color: #ffffff;
-  color: #000000;
-
-  border-radius: 6px;
-  padding: 10px 10px;
-  position: absolute;
-  z-index: 1;
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 1s;
-  box-shadow: 0 1px 4px rgba(121,41,0,.25);
-  font-size:13px;
-  font-weight: normal;
-  line-height: 1.5em;
-  text-align: left;
-}
-
-.tooltip .btn-send-tooltip {
-  left: 55px;
-  bottom: 125%;
-}
-
-.tooltip .btn-question-tooltip {
-  left: -83px;
-  bottom: 200%;
-  width:280px;
-
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #ffffff transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}

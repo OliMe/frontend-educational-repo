@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Учебный проект</title>
+    <link rel="stylesheet" href="/build/bundle.css">
+</head>
+<body class="">
+<div class="container ">
+    <div class="layout">
+    </div>
+    <main class="cf limit">
+        <div class="left-menu-col">
+            <a href="" class="button button-back ">
+                <span class="with-icon">Назад в каталог</span>
+            </a>
+            <nav class="left-price">
+                <ul class="left-price-list top3em">
+                    <li><a class="link-left" href="">Личный кабинет</a></li>
+                    <li><a class="link-left" href="">Мои заказы (27)</a></li>
+                    <li><a class="link-left" href="">Претензии к товарам</a></li>
+                </ul>
+                <ul class="left-price-list top1em">
+                    <li><span class="icon-basket"></span><a class="link-left link-basket" href="">Корзина (7)</a></li>
+                    <li><span class="icon-heart"></span><a class="link-left link-heart" href="">Избранное</a></li>
+                    <li><span class="icon-exit"></span><a class="link-left link-exit" href="">Выход</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="reduce">
+            <div class="title">
+                <h1>Создание претензии № 79876 от 03.04.2017</h1>
+                <button class="button-grays-draft">Черновик</button>
+                <div class="description-title">Перечислите товары, к которым у Вас есть претензии, укажите артикул,
+                    количество товара и причину недовольства.
+                </div>
+            </div>
+            <aside class="extra" id="container_send_form">
+            </aside>
+            <section class="dissatisfaction-list">
+            </section>
+            <div id="form_add">
+            </div>
+        </div>
+    </main>
+</div>
+<!-- -------------------------------- !-->
+<!-- форма добавления новой претензии !-->
+<script type="text/template" id="form_template">
+    <article>
+        <span class="icon-close dissatisfaction-close-icon"></span>
+        <div class="form-back-item">
+            <h2>Новый товар</h2>
+            <div class="form-about-item">
+                <div class="row-inline-50">
+                    <label>Номер накладной
+                        <button class="question_btn tooltip">?
+                            <span class="tooltiptext btn-question-tooltip">Укажите номер товарной накладной, <br> по которой вы получили заявляемый товар</span>
+                        </button>
+                    </label>
+                    <input class="input-styled" id="invoice" type="text">
+                </div>
+                <div class="row-inline-50 margin-left-5-persent">
+                    <label>Артикул<span class="icon-question"></span></label>
+                    <input class="input-styled" id="article" type="text">
+                </div>
+            </div>
+            <div class="form-dissatisfaction">
+                <div class="row">
+                    <label>Причина недовольства</label>
+                </div>
+                <div class="button-dissatisfaction">
+                    <div class="row-inline">
+                        <button class="btn-diss btn-set-form-dissatisfaction  " id="mirrage">Брак
+                        </button>
+                    </div>
+                    <div class="row-inline margin-left-1-em">
+                        <button class="btn-diss btn-set-form-dissatisfaction" id="non-inposition">Недовложение</button>
+                    </div>
+                    <div class="row-inline margin-left-1-em">
+                        <button class="btn-diss btn-set-form-dissatisfaction" id="undercompartment">Недокомплект
+                        </button>
+                    </div>
+                    <div class="row-inline margin-left-1-em">
+                        <button class="btn-diss btn-set-form-dissatisfaction" id="surpluses">Излишки</button>
+                    </div>
+                    <div class="row-inline margin-left-1-em">
+                        <button class="btn-diss btn-set-form-dissatisfaction" id="return">Возврат</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-set-num">
+            </div>
+            <div class="form-set-comment">
+                <div class="row">
+                    <label>Комментарий к товару</label>
+                    <div class="comment-container">
+                        <textarea rows="5" class=" input-styled comment-area" id="comment"></textarea>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-set-item">
+                <% _.each(collection, function(model){
+                console.log(model);
+                %>
+                <div class="item-photo" id="id<%= model.id %>">
+                    <img src="<%= model.data %>" class="photo_add">
+                    <span class="close-item" id="<%= model.id %>"></span>
+                </div>
+                <% }) %>
+            </div>
+            <div class="form-add-photo">
+                <label for="file-upload" class="link-add-photo">
+                    + Добавить фото
+                </label>
+                <input id="file-upload" type="file" style="display:none"/>
+
+            </div>
+            <div class="form-btns-bottom">
+                <button class="btn-add-dissatisfaction button">Добавить к претензии</button>
+                <button class="btn-cancel-dissatisfaction button">Отменить</button>
+            </div>
+        </div>
+    </article>
+
+</script>
+<!-- --------------------------------------- !-->
+<!-- компоненты формы - причина недовольства !-->
+<script type="text/template" id="template_mirrage">
+    <div class="row-inline">
+        <label class="label-inline">Кол-во с браком:</label>
+        <div class="input-amount-container">
+            <span class="input-minus-select btn-minus"></span>
+            <input type="text" class="input-amount input-num" value="0" maxlength="5">
+            <span class="input-plus-select btn-plus"></span>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="template_non-inposition">
+    <div>
+        <div class="row-inline">
+            <label class="label-inline">Заказано:</label>
+            <div class="input-amount-container">
+                <span class="input-minus-select btn-minus"></span>
+                <input class="input-amount input-num" type="text" value="0" maxlength="5">
+                <span class="input-plus-select btn-plus"></span>
+            </div>
+        </div>
+        <div class="row-inline margin-left-5-persent">
+            <label class="label-inline">Получено:</label>
+            <div class="input-amount-container">
+                <span class="input-minus-select btn-minus"></span>
+                <input class="input-amount input-num non-imposion" type="text" value="0" maxlength="5">
+                <span class="input-plus-select btn-plus"></span>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="template_return">
+    <div class="row-inline">
+        <label class="label-inline">Возврат:</label>
+        <div class="input-amount-container">
+            <span class="input-minus-select btn-minus"></span>
+            <input class="input-amount input-num" value="0" type="text" maxlength="5">
+            <span class="input-plus-select btn-plus"></span>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="template_surpluses">
+    <div class="row-inline">
+        <label class="label-inline">Излишки товаров:</label>
+        <div class="input-amount-container">
+            <span class="input-minus-select btn-minus"></span>
+            <input class="input-amount input-num" value="0" type="text" maxlength="5">
+            <span class="input-plus-select btn-plus"></span>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="template_undercompartment">
+    <div class="row-inline">
+        <label class="label-inline">Недокомплектовано товаров:</label>
+        <div class="input-amount-container">
+            <span class="input-minus-select btn-minus"></span>
+            <input class="input-amount input-num" value="0" type="text" maxlength="5">
+            <span class="input-plus-select btn-plus"></span>
+        </div>
+    </div>
+</script>
+<!-- --------------------------------------- !-->
+<!-- Товар из списка отображения !-->
+<script type="text/template" id="template_item">
+    <% _.each(collection.models, function(item){ %>
+    <% modelJSON = item.toJSON(); %>
+    <div class="item-basket">
+        <div class="dissatisfaction-info">
+            <p><a href="" class="link-non-imposition <%= modelJSON.type_cause %>"><%= modelJSON.name_cause %></a>
+                <% if( item.hasComment() == true ) { %>
+                <span class="icon-comment"></span>
+                <% } %>
+                <% if( item.hasPhoto() == true ) { %>
+                <span class="icon-photo"></span>
+                <% } %>
+            </p>
+            <p><a href="" class="link-name-item"><%= modelJSON.name %></a></p>
+            <p class="more-inform">
+            <div class="num-invoice">Номер накладной: <span><%= modelJSON.invoice %></span></div>
+            <div class="num-article">Арт.:<span><%= modelJSON.article %></span></div>
+            </p>
+        </div>
+        <div class="order-recieved">
+            <% switch(modelJSON) { case 13: %>
+            <button id="schoolButton" value="schools" class="gridChooser k-textbox">Schools</button>
+            <% break; case 12: %>
+            <button id="classButton" value="classes" class="gridChooser k-textbox">Classes</button>
+            <button id="testButton" value="tests" class="gridChooser k-textbox">Test</button>
+            <% break; } %>
+            <% switch(modelJSON.type_cause){ case "mirrage": %>
+            <div>браковано: <b><%= modelJSON.causeAmount %></b> шт.</div>
+            <% break; case "non-inposition":%>
+            <div>заказано: <b><%= modelJSON.causeAmount %></b> шт.</div>
+            <div>получено: <b><%= modelJSON.causeAmountNonImposion %></b> шт.</div>
+            <% break; case "undercompartment": %>
+            <div>недокомплектовано: <b><%= modelJSON.causeAmount %></b> шт.</div>
+            <% break; case "surpluses":%>
+            <div>излишки: <b><%= modelJSON.causeAmount %></b> шт.</div>
+            <% break; case "return":%>
+            <div>возврат: <b><%= modelJSON.causeAmount %></b> шт.</div>
+            <% break; } %>
+        </div>
+        <div class="item-img">
+            <img src="<%= modelJSON.img %>" align="left" hspace="10">
+        </div>
+    </div>
+    <% }); %>
+</script>
+<!-- Кнопка добавления нового товара !-->
+<script type="text/template" id="btn_add_template">
+    <% if( isShowBtn == true ) { %>
+    <button class="btn-add-item button">
+        <span class="icon-add">Добавить товар</span>
+    </button>
+    <% } %>
+</script>
+<!-- -------------------------------- !-->
+<!-- Форма отправления --------------- !-->
+<script type="text/template" id="template_send_form">
+    <% if( summ > 0 ) { %>
+    <div class="menu-rght-col">
+        <div class="container-col">
+            <p class="claim-summ">в претензии <span id="#summ_items"><%= summ %></span> наименование товара</p>
+            <% if( is_enable_send == true ) { %>
+            <button class="btn-send button" id="send_form_enabled">Отправить</button>
+            <% } else { %>
+            <button class="btn-send-disable button tooltip" id="send_form_disabled">Отправить
+                <span class="tooltiptext btn-send-tooltip">Заполните форму добавления товара или отмените заполнение, чтобы отправить претензию</span>
+            </button>
+            <% } %>
+            <button class="btn-draft-save button">Сохранить как черовик</button>
+            <p class="info-draft-save">Вы можете сохранить претензию как черовик и вернуться к ней, когда будет
+                время.</p>
+        </div>
+        <i class="down-decor-right-col"></i>
+    </div>
+    <% } %>
+</script>
+<!-- ---------------------------------- !-->
+<!-- <script src="/build/vendor-min.js" type="text/javascript"></script> !-->
+<script src="/build/bundle.js" type="text/javascript"></script>
+</body>
+</html>
+
