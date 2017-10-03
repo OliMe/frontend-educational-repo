@@ -59,11 +59,12 @@ module.exports = {
            cssProcessorOptions: { discardComments: { removeAll: true } }
        }),
 
+/*
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filename: 'vendor-min.js'
         })
-
+*/
     ]
 
 };

@@ -11,13 +11,14 @@ import PhotoCollection from '../collections/photos';
  * Форма заполнения претензии
  */
 var FormView = Backbone.View.extend({
-    el: $('#form_add'),
+    el: '#form_add',
     /**
      * Создает коллекции листа отображения добавленнх товаров,
      * коллекции загруженных фотографий и модель формы
      * @param ListCollection collection коллекция уже добавленных товаров
      */
     initialize: function ( collection ) {
+        this.template = _.template( $('#form_template').html() );
         this.collection = collection;
         this.photoCollection = new PhotoCollection();
         this.listenTo( this.photoCollection, 'add', this.onPhotoAdded );
@@ -38,7 +39,7 @@ var FormView = Backbone.View.extend({
         'click .close-item':"closeItem"//  кнопка закрыть (справа сверху)
 
     },
-    template: _.template( $('#form_template').html() ),
+    template: "",
     /**
      * Выводит форму, передает коллекцию фотографий, добавленных пользователем
      */
@@ -102,7 +103,7 @@ var FormView = Backbone.View.extend({
         this.model.changeCauseTypeAndName($(ev.currentTarget).attr( 'id' ), $(ev.currentTarget).text());
         // рендерить новую форму для ввода
         this.cause.setElement( this.$el.find('.form-set-num'));
-        this.cause.render();
+        this.cause.render()
     },
     /**
      * Событие из коллекции, добавление фото в форму

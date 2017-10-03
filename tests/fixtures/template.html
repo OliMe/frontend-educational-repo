@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Учебный проект</title>
-    <link rel="stylesheet" href="/build/bundle.css">
-</head>
-<body class="">
 <div class="container ">
     <div class="layout">
     </div>
@@ -102,7 +94,7 @@
             </div>
             <div class="form-set-item">
                 <% _.each(collection, function(model){
-                console.log(model);
+
                 %>
                 <div class="item-photo" id="id<%= model.id %>">
                     <img src="<%= model.data %>" class="photo_add">
@@ -247,7 +239,7 @@
 <script type="text/template" id="template_send_form">
     <div class="menu-rght-col">
         <div class="container-col">
-            <p class="claim-summ">в претензии <span id="#summ_items"><%= summ %></span> наименование товара</p>
+            <p class="claim-summ">в претензии <span id="summ_items"><%= summ %></span> наименование товара</p>
             <% if( is_enable_send == true ) { %>
             <button class="btn-send button" id="send_form_enabled">Отправить</button>
             <% } else { %>
@@ -263,8 +255,3 @@
     </div>
 </script>
 <!-- ---------------------------------- !-->
-<script src="/build/vendor-min.js" type="text/javascript"></script>
-<script src="/build/bundle.js" type="text/javascript"></script>
-</body>
-</html>
-

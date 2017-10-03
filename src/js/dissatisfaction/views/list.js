@@ -9,11 +9,12 @@ import ListCollection from "../collections/items";
  * Отображение списка добавленных товаров через форму претензии
  */
 var ListView = Backbone.View.extend({
-    el: $('.dissatisfaction-list'),
+    el: '.dissatisfaction-list',
     /**
      * Создает коллекцию товаров и форму добавления нового товара
      */
     initialize: function () {
+        this.addTemplates();
         this.collection = new ListCollection();
         this.listenTo(this.collection, "add", this.showBtnForm );
         this.render();
@@ -22,16 +23,26 @@ var ListView = Backbone.View.extend({
         // если коллекция еще не содержит товары, отобразить форму заполнения
         if( this.collection.length <= 0 )
             this.addNewForm();
+
     },
     events: {
         'mousedown .btn-add-item': "addNewForm",   // кнопка создания новой формы
     },
+
     // флаг, что форма отображена
     isShowForm: true,
-    template: _.template($('#template_item').html(), {}),
-    templateBtn: _.template($('#btn_add_template').html()),
-    templateIconComment: _.template($('#template_icom_comment')),
-    templateIconPhoto: _.template($('#template_icom_photo')),
+    template: "",
+    templateBtn: "",
+    templateIconComment: "",
+    templateIconPhoto: "",
+
+    addTemplates: function() {
+        this.template = _.template( $('#template_item').html(), {});
+        this.templateBtn =   _.template($('#btn_add_template').html());
+        this.templateIconComment = _.template($('#template_icom_comment'));
+        this.templateIconPhoto =  _.template($('#template_icom_photo'));
+    },
+
     /**
      * Отображает коллекцию товаров, добавляет в конец кнопку создания новой формы
      * добавления товара
@@ -80,10 +91,10 @@ var ListView = Backbone.View.extend({
         // спрятать кнопку
         this.hideBtnForm();
         // отображение формы добавления товара при загрузке страницы
-        var item = new FormView(this.collection, this);
-        item.render();
+        this.form = new FormView(this.collection, this);
+        this.form.render();
         // показать кнопку, если отменили форму
-        this.listenTo(item, 'canceled', this.showBtnForm );
+        this.listenTo(this.form, 'canceled', this.showBtnForm );
     }
 });
 export default ListView;
