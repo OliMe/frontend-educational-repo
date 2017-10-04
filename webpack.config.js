@@ -4,7 +4,8 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var webpack = require('webpack');
 
-module.exports = {
+const config = {
+
     watch: true,
     entry: [
         './src/js/index.js',
@@ -54,18 +55,31 @@ module.exports = {
             filename: 'bundle.css'
         }),
 
-       new OptimizeCssAssetsPlugin({
-           assetNameRegExp: /\.css$/,
-           cssProcessorOptions: { discardComments: { removeAll: true } }
-       }),
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/,
+            cssProcessorOptions: {discardComments: {removeAll: true}}
+        }),
+    ]
 
-/*
+};
+
+if (process.env.NODE_ENV == 'production') {
+    config.plugins.push(
+        new ExtractTextPlugin({ // define where to save the file
+            filename: 'bundle.css'
+        }),
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/,
+            cssProcessorOptions: {discardComments: {removeAll: true}}
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filename: 'vendor-min.js'
         })
-*/
-    ]
+    )
+}
 
-};
+module.exports = config;
+
+
 

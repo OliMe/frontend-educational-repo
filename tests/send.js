@@ -30,7 +30,6 @@ describe('Проверка SendView', function() {
         list.sendForm.render();
         expect( list.sendForm.$el.find('#summ_items').html() ).toBe("2");
     })
-
 })
 
 

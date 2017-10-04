@@ -4,7 +4,8 @@
   "description": "Project for educational purposes",
   "main": "src/js/index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "NODE_ENV='production' webpack -p",
+    "karma": "karma start karma.config.js"
   },
   "repository": {
     "type": "git",
