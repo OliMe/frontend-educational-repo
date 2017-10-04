@@ -19,7 +19,7 @@ describe('Проверка SendView', function() {
         expect( list.sendForm.$el.find('.menu-rght-col').length ).toBe(0);
     });
 
-    it( 'Прверка активации кнопки отправления формы после добавления товара', function() {
+    it( 'Проверка активации кнопки отправления формы после добавления товара', function() {
         list.collection.add( new FormModel() );
         expect( list.sendForm.$el.find('.btn-send').length ).toBe(1);
     });
