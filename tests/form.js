@@ -8,16 +8,16 @@ import Collection from "./../src/js/dissatisfaction/collections/items";
 /**
  * Создает пустую форму и проверяет ее отображение
  */
-describe('Проверка отображения формы', function() {
-    beforeAll(function () {
+describe('Проверка FormView', function() {
+    var item;
+    var list;
+    var collection;
+    beforeEach( function() {
         jasmine.getFixtures().fixturesPath = 'base/tests/fixtures';
         loadFixtures('template.html')
-    });
-    var item;
-    beforeEach( function() {
         localStorage.clear();
-        var collection = new Collection();
-        var list = new ListView();
+        collection = new Collection();
+        list = new ListView();
         item = new FormView(collection, list);
     });
 
@@ -25,18 +25,8 @@ describe('Проверка отображения формы', function() {
         expect(item.$el.find('.form-back-item').length).not.toBe(0);
     });
 
-})
-/**
- * Вводит значения в форму и проверяет результат отображения в списке товаров
- */
-describe('Проверка изменения значений формы', function() {
-    var item;
-    var list
-    beforeAll( function() {
-        jasmine.getFixtures().fixturesPath = 'base/tests/fixtures';
-        loadFixtures('template.html');
+    var setParams = function() {
         localStorage.clear();
-
         list = new ListView();
         item = list.form;
         item.$el.find('#invoice').val('10000').trigger("change");
@@ -46,14 +36,15 @@ describe('Проверка изменения значений формы', func
         //Изменения в кол-ве неудовлетворивших товаров
         item.cause.utiliteInput.$el.find('.input-amount').val(100).trigger( 'change' );
         item.$el.find('.btn-add-dissatisfaction').trigger("click");
-    });
+    }
     /**
-    * Если товар отобразился, значит ViewForm, ViewList и
-    * FormModel работают корректно
-    * Не проверяем иконку добавления картинки,
-    * т.к. не тестируем программное добавление фото
-    */
+     * Если товар отобразился, значит ViewForm, ViewList и
+     * FormModel работают корректно
+     * Не проверяем иконку добавления картинки,
+     * т.к. не тестируем программное добавление фото
+     */
     it( "Проверить отображение нового товара с заданными параметрами", function() {
+        setParams();
         expect( list.$el.html() ).toHaveClass('item-basket');
         expect( list.$el.find('.num-invoice span').html() ).toBe("10000");
         expect( list.$el.find('.num-article span').html() ).toBe("20000");
@@ -61,4 +52,5 @@ describe('Проверка изменения значений формы', func
         expect( list.$el.find('.dissatisfaction-info p').html() ).toHaveClass("icon-comment");
     })
 })
+
 
