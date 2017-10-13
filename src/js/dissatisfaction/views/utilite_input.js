@@ -11,8 +11,8 @@ var UtiliteInput = Backbone.View.extend({
      * Отслеживает события нажатия на кнопки + и - и изменения поля input
      */
     events: {
-        "mousedown .btn-minus": "minusVal",
-        "mousedown .btn-plus": "plusVal",
+        "click .btn-minus": "minusVal",
+        "click .btn-plus": "plusVal",
         "change .input-amount": "onChange",
     },
     /**
@@ -34,7 +34,6 @@ var UtiliteInput = Backbone.View.extend({
      * @param ev событие клика на <span>, input получаем через родителя
      */
     plusVal: function (ev) {
-
         var input = $(ev.currentTarget).parent().find('.input-amount');
         var val = input.val();
         val = parseInt(val);

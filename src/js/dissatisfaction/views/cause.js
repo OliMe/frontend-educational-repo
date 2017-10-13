@@ -34,11 +34,9 @@ var Cause = Backbone.View.extend({
     onChangetAmountCause: function (val) {
         // проверяем, если кликнули "недовложение"
         if (val.hasClass('non-imposion')) {
-            console.log("change imposion");
             this.model.set('causeAmountNonImposion', val.val());
         }
         else {
-            console.log("change another");
             // изменяем кол-во остальны прчин недовольства
             this.model.set('causeAmount', val.val());
         }

@@ -5,12 +5,13 @@ import $ from "jquery";
  * Форма отправления списка товаров в претензии на сервер
  */
 var SendFormView = Backbone.View.extend({
-    el:$('#container_send_form'),
+    el:'#container_send_form',
     /**
      * Отображает кол-во добавленных товаров и кнопки "Отправить" и "Сохранить в черновик"
      * @param ListCollection collection коллекция со списком товаров
      */
     initialize: function ( collection ) {
+        this.template = _.template( $('#template_send_form').html(), {} );
         this.collection = collection;
         this.collection.bind('add', this.changeSumm, this );
         this.render();
@@ -18,14 +19,16 @@ var SendFormView = Backbone.View.extend({
     events: {
         'mousedown #send_form_enabled': "sendForm",   // кнопка создания новой формы
     },
-    template: _.template( $('#template_send_form').html(), {} ),
+    template: "",
     /**
      * Флаг активации кнопки отправления, если false
      * то открыта форма добавения товара
      */
     isEnableSendButton:true,
     render: function () {
-        this.$el.html( this.template( {summ: this.collection.length, is_enable_send:this.isEnableSendButton } ) );
+        if( this.collection.length > 0 ){
+            this.$el.html( this.template( {summ: this.collection.length, is_enable_send:this.isEnableSendButton } ) );
+        }
     },
     /**
      * Событие тзменения количества товаров в списке товаров ListCollection
